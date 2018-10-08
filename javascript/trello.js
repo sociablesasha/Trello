@@ -29,6 +29,7 @@ function init() {
         form.switchClass('list-add-enable', 'list-add-disable');
 
         $(".add-list").unbind("click");
+        $(".add-card").unbind("click");
 
         init();
     });
@@ -45,6 +46,7 @@ function init() {
         var form = $(event.currentTarget.parentElement.parentElement);
         form.switchClass('card-add-enable', 'card-add-disable');
 
+        $(".add-list").unbind("click");
         $(".add-card").unbind("click");
 
         init();
