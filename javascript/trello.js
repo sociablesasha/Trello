@@ -16,6 +16,7 @@ function init() {
         revert: 'invalid'
     });
 
+    $(".add-list").unbind("click");
     $('.add-list').click(function (event) {
         var list = $('.list-clone').clone();
         list.switchClass('list-clone', 'list');
@@ -28,12 +29,10 @@ function init() {
         var form = $(event.currentTarget.parentElement.parentElement);
         form.switchClass('list-add-enable', 'list-add-disable');
 
-        $(".add-list").unbind("click");
-        $(".add-card").unbind("click");
-
         init();
     });
 
+    $(".add-card").unbind("click");
     $('.add-card').click(function (event) {
         var card = $('.card-clone').clone();
         card.switchClass('card-clone', 'card');
@@ -45,10 +44,7 @@ function init() {
 
         var form = $(event.currentTarget.parentElement.parentElement);
         form.switchClass('card-add-enable', 'card-add-disable');
-
-        $(".add-list").unbind("click");
-        $(".add-card").unbind("click");
-
+        
         init();
     });
 
