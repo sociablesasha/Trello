@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+    <link href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' rel='stylesheet'>
+
+    <link href='../css/style.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class='trello'>
+        <div class='lists'>
+            <div class='list'>
+                <div class='box'>
+                    <div class='header'>To Do</div>
+                    <div class='cards'>
+                    </div>
+                    <div class='footer card-add-disable'>
+                        <a class='form-open'>+ Add another card</a>
+                        <div class='card-form'>
+                            <input type='text'>
+                            <button class='true add-card'><i class='fas fa-check'></i></button>
+                            <button class='false form-close'><i class='fas fa-times'></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='box'>
+                    <div class='header'>Doing</div>
+                    <div class='cards'>
+                    </div>
+                    <div class='footer card-add-disable'>
+                        <a class='form-open'>+ Add another card</a>
+                        <div class='card-form'>
+                            <input type='text'>
+                            <button class='true add-card'><i class='fas fa-check'></i></button>
+                            <button class='false form-close'><i class='fas fa-times'></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='box'>
+                    <div class='header'>Done</div>
+                    <div class='cards'>
+                    </div>
+                    <div class='footer card-add-disable'>
+                        <a class='form-open'>+ Add another card</a>
+                        <div class='card-form'>
+                            <input type='text'>
+                            <button class='true add-card'><i class='fas fa-check'></i></button>
+                            <button class='false form-close'><i class='fas fa-times'></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='list-clone clone'>
+            <div class='box'>
+                <div class='header'>Done</div>
+                <div class='cards'>
+                </div>
+                <div class='footer card-add-disable'>
+                    <a class='form-open'>+ Add another card</a>
+                    <div class='card-form'>
+                        <input type='text'>
+                        <button class='true add-card'><i class='fas fa-check'></i></button>
+                        <button class='false form-close'><i class='fas fa-times'></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='list-add list-add-disable'>
+            <a class='form-open'>+ Add another list</a>
+            <div class='list-form'>
+                <input type='text'>
+                <button class='true add-list'><i class='fas fa-check'></i></button>
+                <button class='false form-close'><i class='fas fa-times'></i></button>
+            </div>
+        </div>
+        <div class='card-clone'></div>
+    </div>
+
+    <script src='../javascript/trello.js'></script>
+</body>
+
+</html>
