@@ -26,6 +26,11 @@ button {
     border: 0;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 .trello {
     overflow-x: auto;
     white-space: nowrap;
@@ -46,7 +51,7 @@ button {
 
 .list {
     width: calc(300px - 30px) !important;
-    height: 100%;
+    height: calc(100% - 30px) !important;
 
     display: inline-block;
     vertical-align: top;
@@ -138,10 +143,15 @@ button {
     cursor: pointer;
 }
 
-.cards {
-    min-height: 50px;
+.subject {
+    display: inline-block;
+}
 
-    padding: 10px 0px 10px 0px;
+.cards {
+    min-height: 32px;
+    max-height: 780px;
+
+    margin: 10px 0px 10px 0px;
 }
 
 .card {
@@ -162,6 +172,20 @@ button {
     margin: 7.5px 0px 7.5px 0px;
 
     cursor: pointer;
+}
+
+.title {
+    display: inline-block;
+}
+
+.edit {
+    float: right;
+
+    display: none;
+}
+
+.focus .edit {
+    display: block;
 }
 
 .form-open {

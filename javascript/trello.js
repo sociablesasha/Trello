@@ -16,6 +16,8 @@ function init() {
         revert: 'invalid'
     });
 
+    $('.list-add').disableSelection();
+
     $(".add-list").unbind("click");
     $('.add-list').click(function (event) {
         var list = $('.list-clone').clone();
@@ -37,7 +39,7 @@ function init() {
         var card = $('.card-clone').clone();
         card.switchClass('card-clone', 'card');
         card.removeClass('clone');
-        card.text(inputting($(event.currentTarget.parentElement).find('input')));
+        card.find(".title").text(inputting($(event.currentTarget.parentElement).find('input')));
 
         var cards = $(event.currentTarget.parentElement.parentElement.parentElement).find(".cards");
         cards.append(card);
@@ -48,8 +50,8 @@ function init() {
         init();
     });
 
-    $('.list-add').disableSelection();
 
+    $(".form-open").unbind("click");
     $('.form-open').click(function (event) {
         var form = $(event.currentTarget.parentElement);
 
@@ -60,6 +62,7 @@ function init() {
         }
     });
 
+    $(".form-close").unbind("click");
     $('.form-close').click(function (event) {
         var form = $(event.currentTarget.parentElement.parentElement);
 
@@ -69,7 +72,17 @@ function init() {
             form.switchClass('list-add-enable', 'list-add-disable');
         }
     });
-}
+
+//     $(".header, .card").unbind("hover");
+//     $('.header, .card').hover(function (event) {
+//         var box = $(event.currentTarget);
+//         box.toggleClass("focus");
+//     });
+
+//     $(".edit").unbind("click");
+//     $(".header .edit").click(function (event) {        
+//     });
+// }
 
 function inputting(dom) {
     var value = $(dom).val();
