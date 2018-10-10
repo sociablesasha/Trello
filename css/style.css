@@ -239,6 +239,15 @@ p {
     cursor: pointer;
 }
 
+.fas {
+    width: 15px;
+    height: 15px;
+    padding: 1px;
+    border-radius: 5px;
+
+    text-align: center;
+}
+
 .true {
     background-color: lightgreen;
 }

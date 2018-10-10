@@ -1,86 +1,81 @@
-function init() {
-    $('.lists').sortable({
-        revert: true
-    });
-    $('.list').draggable({
-        connectToSortable: '.lists',
-        revert: 'invalid',
-        scroll: false
-    });
+$('.lists').sortable({
+    revert: true
+});
+$('.list').draggable({
+    connectToSortable: '.lists',
+    revert: 'invalid',
+    scroll: false
+});
 
-    $('.cards').sortable({
-        revert: true,
-    });
-    $('.card').draggable({
-        connectToSortable: '.cards',
-        revert: 'invalid'
-    });
+$('.cards').sortable({
+    revert: true,
+});
+$('.card').draggable({
+    connectToSortable: '.cards',
+    revert: 'invalid'
+});
 
-    $('.list-add').disableSelection();
+$('.list-add').disableSelection();
 
-    $(".add-list").unbind("click");
-    $('.add-list').click(event => {
-        var list = $('.list-clone').clone();
-        list.switchClass('list-clone', 'list');
-        list.find('.header').text(inputting($(event.currentTarget.parentElement).find('input')));
+// Event Bubbling, Capture, Delegation
+$(".trello").on("click", event => {
+    var DOM = event.target;
 
-        var lists = $('.lists');
-        lists.append(list);
+    if ($(DOM).hasClass("add-list")) {
+        addingList(DOM);
+    } else if ($(DOM).hasClass("add-card")) {
+        addingCard(DOM);
+    } else if ($(DOM).hasClass("form-open")) {
+        openingForm(DOM);
+    } else if ($(DOM).hasClass("form-close")) {
+        closingForm(DOM);
+    }
+});
 
-        var form = $(event.currentTarget.parentElement.parentElement);
-        form.switchClass('list-add-enable', 'list-add-disable');
+function addingList(DOM) {
+    var list = $('.list-clone').clone();
+    list.switchClass('list-clone', 'list');
+    list.find('.header').text(inputting($(DOM.parentElement).find('input')));
 
-        init();
-    });
+    var lists = $('.lists');
+    lists.append(list);
 
-    $(".add-card").unbind("click");
-    $('.add-card').click(event => {
-        var card = $('.card-clone').clone();
-        card.switchClass('card-clone', 'card');
-        card.removeClass('clone');
-        card.find(".title").text(inputting($(event.currentTarget.parentElement).find('input')));
-
-        var cards = $(event.currentTarget.parentElement.parentElement.parentElement).find(".cards");
-        cards.append(card);
-
-        var form = $(event.currentTarget.parentElement.parentElement);
-        form.switchClass('card-add-enable', 'card-add-disable');
-
-        init();
-    });
-
-
-    $(".form-open").unbind("click");
-    $('.form-open').click(event => {
-        var form = $(event.currentTarget.parentElement);
-
-        if (form.hasClass("footer")) {
-            form.switchClass('card-add-disable', 'card-add-enable');
-        } else {
-            form.switchClass('list-add-disable', 'list-add-enable');
-        }
-    });
-
-    $(".form-close").unbind("click");
-    $('.form-close').click(event => {
-        var form = $(event.currentTarget.parentElement.parentElement);
-
-        if (form.hasClass("footer")) {
-            form.switchClass('card-add-enable', 'card-add-disable');
-        } else {
-            form.switchClass('list-add-enable', 'list-add-disable');
-        }
-    });
+    var form = $(DOM.parentElement.parentElement);
+    form.switchClass('list-add-enable', 'list-add-disable');
 }
 
-//     $(".header, .card").unbind("hover");
-//     $('.header, .card').hover(event => {
-//         var box = $(event.currentTarget);
-//         box.toggleClass("focus");
-//     });
-//     $(".edit").unbind("click");
-//     $(".header .edit").click(event => {        
-//     });
+function addingCard(DOM) {
+    var card = $('.card-clone').clone();
+    card.switchClass('card-clone', 'card');
+    card.removeClass('clone');
+    card.find(".title").text(inputting($(DOM.parentElement).find('input')));
+
+    var cards = $(DOM.parentElement.parentElement.parentElement).find(".cards");
+    cards.append(card);
+
+    var form = $(DOM.parentElement.parentElement);
+    form.switchClass('card-add-enable', 'card-add-disable');
+}
+
+function openingForm(DOM) {
+    var form = $(DOM.parentElement);
+
+    if (form.hasClass("footer")) {
+        form.switchClass('card-add-disable', 'card-add-enable');
+    } else {
+        form.switchClass('list-add-disable', 'list-add-enable');
+    }
+}
+
+function closingForm(DOM) {
+    var form = $(DOM.parentElement.parentElement);
+
+    if (form.hasClass("footer")) {
+        form.switchClass('card-add-enable', 'card-add-disable');
+    } else {
+        form.switchClass('list-add-enable', 'list-add-disable');
+    }
+}
 
 function inputting(dom) {
     var value = $(dom).val();
@@ -88,7 +83,3 @@ function inputting(dom) {
 
     return value;
 }
-
-$(document).ready(() => {
-    init();
-})
