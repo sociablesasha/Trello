@@ -19,7 +19,7 @@ function init() {
     $('.list-add').disableSelection();
 
     $(".add-list").unbind("click");
-    $('.add-list').click(function (event) {
+    $('.add-list').click(event => {
         var list = $('.list-clone').clone();
         list.switchClass('list-clone', 'list');
         list.find('.header').text(inputting($(event.currentTarget.parentElement).find('input')));
@@ -34,7 +34,7 @@ function init() {
     });
 
     $(".add-card").unbind("click");
-    $('.add-card').click(function (event) {
+    $('.add-card').click(event => {
         var card = $('.card-clone').clone();
         card.switchClass('card-clone', 'card');
         card.removeClass('clone');
@@ -51,7 +51,7 @@ function init() {
 
 
     $(".form-open").unbind("click");
-    $('.form-open').click(function (event) {
+    $('.form-open').click(event => {
         var form = $(event.currentTarget.parentElement);
 
         if (form.hasClass("footer")) {
@@ -62,7 +62,7 @@ function init() {
     });
 
     $(".form-close").unbind("click");
-    $('.form-close').click(function (event) {
+    $('.form-close').click(event => {
         var form = $(event.currentTarget.parentElement.parentElement);
 
         if (form.hasClass("footer")) {
@@ -74,12 +74,12 @@ function init() {
 }
 
 //     $(".header, .card").unbind("hover");
-//     $('.header, .card').hover(function (event) {
+//     $('.header, .card').hover(event => {
 //         var box = $(event.currentTarget);
 //         box.toggleClass("focus");
 //     });
 //     $(".edit").unbind("click");
-//     $(".header .edit").click(function (event) {        
+//     $(".header .edit").click(event => {        
 //     });
 
 function inputting(dom) {
@@ -89,6 +89,6 @@ function inputting(dom) {
     return value;
 }
 
-$(document).ready(function () {
+$(document).ready(() => {
     init();
 })
