@@ -22,7 +22,6 @@ function init() {
     $('.add-list').click(function (event) {
         var list = $('.list-clone').clone();
         list.switchClass('list-clone', 'list');
-        list.removeClass('clone');
         list.find('.header').text(inputting($(event.currentTarget.parentElement).find('input')));
 
         var lists = $('.lists');
@@ -46,7 +45,7 @@ function init() {
 
         var form = $(event.currentTarget.parentElement.parentElement);
         form.switchClass('card-add-enable', 'card-add-disable');
-        
+
         init();
     });
 
@@ -72,17 +71,16 @@ function init() {
             form.switchClass('list-add-enable', 'list-add-disable');
         }
     });
+}
 
 //     $(".header, .card").unbind("hover");
 //     $('.header, .card').hover(function (event) {
 //         var box = $(event.currentTarget);
 //         box.toggleClass("focus");
 //     });
-
 //     $(".edit").unbind("click");
 //     $(".header .edit").click(function (event) {        
 //     });
-// }
 
 function inputting(dom) {
     var value = $(dom).val();
